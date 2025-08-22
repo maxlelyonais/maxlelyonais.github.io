@@ -1,4 +1,3 @@
-import React from 'react'
 import '../styles/footer.css'
 import CurriculumLink from "../assets/CV_HaoXu.pdf"
 
