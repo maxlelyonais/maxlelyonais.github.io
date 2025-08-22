@@ -1,0 +1,28 @@
+section .card {
+    display:flex;
+    flex-direction: row;
+}
+
+section .card .Detail {
+    width: 50%;
+    list-style: none;
+
+}
+
+section .card .Detail li{
+    margin-bottom: 5%;
+}
+
+section .card .Image {
+    margin-left: 10%;
+    width: 50%;
+}
+
+section h2 {
+  color: #DFD6D6;
+  text-shadow:
+    2px 2px 4px rgba(0,0,0,0.5),
+   -2px -2px 4px rgba(0,0,0,0.5),
+    2px -2px 4px rgba(0,0,0,0.5),
+   -2px 2px 4px rgba(0,0,0,0.5);
+}

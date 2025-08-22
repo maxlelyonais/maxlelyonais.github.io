@@ -1,0 +1,28 @@
+
+#aboutMe{
+    display:flex;
+    flex-direction: column;
+    padding: 5%; 
+    background-color: #131929;
+
+}
+
+section .card .contactInfo{
+    display:flex;
+    gap:5%;
+}
+
+section .card .contactInfo button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #0e3a51; /* example color */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+section .card .contactInfo button:hover {
+    background-color: #2792c8;  /* darker shade on hover */
+    transform: scale(1.05);      /* slight zoom effect */
+}
