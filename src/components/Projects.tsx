@@ -58,30 +58,44 @@ const projects: Record<ProjectKey, Project[]> = {
 
 function Projects() {
   const [selected, setSelected] = useState<ProjectKey>("Backend");
+  const [enabled, setEnabled] = useState<boolean>(false);
 
   return (
     <section id="projects">
       <h2>Projects</h2>
 
       {/* Category Selector */}
-        <div className="projectSelector">
-          {Object.keys(projects).map((key) => {
-            const projectKey = key as ProjectKey;
-            return (
-              <p
-                key={projectKey}
-                onMouseEnter={() => setSelected(projectKey)}
-                className={selected === projectKey ? "active" : ""}
-              >
-                {projectKey}
-              </p>
-            );
-          })}
-        </div>
+      <div className="projectSelector">
+        {Object.keys(projects).map((key) => {
+          const projectKey = key as ProjectKey;
+          return (
 
-
-       <div className="ProjectsGrid">
+            <p
+              key={projectKey}
+              onMouseDown={() => {
+                
+                if (projectKey === selected) {
+                  setEnabled(!enabled);
+                } else {
+                  setSelected(projectKey);
+                }
+              
+              
+              }
+            
+            }
+              className={ (selected === projectKey && enabled) ? "active" : ""}
+            >
+              {projectKey}
+            </p>
+          );
+        })}
+      </div>
+      
+      <div className="ProjectsGrid">
         {projects[selected].map((project, index) => (
+
+          enabled &&
           <ProjectCard
             key={index}
             type={selected}
@@ -95,5 +109,6 @@ function Projects() {
     </section>
   );
 }
+
 
 export default Projects;

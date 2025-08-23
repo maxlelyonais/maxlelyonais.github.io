@@ -2,36 +2,52 @@ import { useState } from "react";
 import "../styles/certificates.css";
 import DevOpsCertificate from "../assets/DevOps_Certificate.jpg";
 
-type Certificates = "DevOps";
+type CertificatesKey = "DevOps (Deutsche Telekom)";
 
 type ImageUrl = {
   imgUrl: string;
 };
 
-const CertificateImages: Record<Certificates, ImageUrl> = {
-  DevOps: { imgUrl: DevOpsCertificate },
+const CertificateImages: Record<CertificatesKey, ImageUrl> = {
+  "DevOps (Deutsche Telekom)": { imgUrl: DevOpsCertificate },
 };
 
 function Certificates() {
-  const [selectedCertificate, setSelectedCertificate] = useState<Certificates | null>(null);
-
+  const [selectedCertificate, setSelectedCertificate] = useState<CertificatesKey | null>(null);
+  const [enable, setEnable] = useState(false);
   return (
     <section id="certificates">
       <h2>Certificates</h2>
 
       <div className="card">
         <ul className="Detail">
-          <li 
-            onMouseEnter={() => setSelectedCertificate("DevOps")} 
-            className={selectedCertificate === "DevOps" ? "active" : ""}
-          >
-            DevOps School (Deutsche Telekom)
-          </li>
+
+          {Object.keys(CertificateImages).map((key) => {
+            
+            const certificateKey = key as CertificatesKey; 
+
+            return (
+            <li
+                key={certificateKey}
+                onMouseDown={() => {
+                  if (certificateKey === selectedCertificate) {
+                    setEnable(!enable);
+                  } else {
+                    setSelectedCertificate(certificateKey);
+                  }
+              }}
+              className={ (selectedCertificate === certificateKey && enable) ? "active" : ""}
+            >
+              {certificateKey}
+            </li>
+            )
+          })}
+
         </ul>
 
         <div className="Image">
-          {selectedCertificate && (
-            <img
+          {enable && selectedCertificate && (
+            <img 
               src={CertificateImages[selectedCertificate].imgUrl}
               alt={selectedCertificate}
             />
