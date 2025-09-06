@@ -33,11 +33,18 @@ function Achievements() {
             return (
 
               <li key={achievementKey}
+
+                  onMouseOver={(e) => {
+                    (e.target as HTMLElement).style.cursor = "pointer";
+                  }}
+
+
                   onMouseDown={() => {
                     if (achievementKey === selectedAchievement) {
                       setEnabled(!enabled)
                     } else {
                       setSelectedAchievement(achievementKey)
+                      setEnabled(true)
                     }
                   }}
                   className={ (selectedAchievement === achievementKey && enabled) ? "active" : ""}

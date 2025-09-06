@@ -28,14 +28,21 @@ function Certificates() {
 
             return (
             <li
-                key={certificateKey}
-                onMouseDown={() => {
+              key={certificateKey}
+
+              onMouseOver={(e) => {
+                (e.target as HTMLElement).style.cursor = "pointer";
+              }}
+
+              onMouseDown={() => {
                   if (certificateKey === selectedCertificate) {
                     setEnable(!enable);
                   } else {
                     setSelectedCertificate(certificateKey);
+                    setEnable(true)
                   }
               }}
+
               className={ (selectedCertificate === certificateKey && enable) ? "active" : ""}
             >
               {certificateKey}

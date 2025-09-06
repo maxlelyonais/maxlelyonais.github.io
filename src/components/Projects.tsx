@@ -72,18 +72,22 @@ function Projects() {
 
             <p
               key={projectKey}
+
+              onMouseOver={(e) => {
+                (e.target as HTMLElement).style.cursor = "pointer";
+              }}
+
               onMouseDown={() => {
                 
                 if (projectKey === selected) {
                   setEnabled(!enabled);
                 } else {
                   setSelected(projectKey);
+                  setEnabled(true)
                 }
               
-              
-              }
-            
-            }
+              }}
+
               className={ (selected === projectKey && enabled) ? "active" : ""}
             >
               {projectKey}
